@@ -24,7 +24,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 					height: 4
 				},
 				media: [
-					{ word: 'Repeats body movements' },
+		    { word: 'Repeats body movements' },
                     { word: 'Avoids eye contact' },
                     { word: 'Dislikes unexpected changes' },
                     { word: 'Struggles making friends' },
@@ -63,22 +63,49 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 				css: {color: '#31b404', 'font-size': '2em'}
 			},
 			// Trial blocks configuration
-			trialsByBlock: [
+			trialsByBlock : 
+			[//Each object in this array defines a block
 				{
-					instHTML: '', // Empty means we will create instructions dynamically
-					block: 1,
-					miniBlocks: 1,
-					singleAttTrials: 10,
-					sharedAttTrials: 10,
-					categoryTrials: 0
-				},
-				{
-					instHTML: '',
-					block: 2,
-					miniBlocks: 2,
-					singleAttTrials: 10,
-					sharedAttTrials: 7,
-					categoryTrials: 7
+					instHTML : '', //Empty means we will create the inst from the instTemplate variable further below. 
+					block : 1, //The block variable is not used later, but could help the user. 
+					//In each block, we can include a number of mini-blocks, to reduce repetition of same group/response.
+					miniBlocks : 1, //Set to 1 if don't need mini blocks. 0 will break the task.
+					singleAttTrials : 10, //Number of trials of the attribute that does not share key with the category (in a mini block).
+					sharedAttTrials : 10, //Number of trials of the attribute that shares key with the category (in a mini block).
+					categoryTrials : 0 // Number of trials of the category (in a mini-block). If 0, the label does not appear.
+					//Note: if no category trials, then attribute1, the one on the left, is considered the single attribute.
+				}, 
+				{ 
+					instHTML : '', 
+					block : 2, 
+					miniBlocks : 2, 
+					singleAttTrials : 10, 
+					sharedAttTrials : 7, 
+					categoryTrials : 7
+				}, 
+				{ 
+					instHTML : '', 
+					block : 3, 
+					miniBlocks : 2, 
+					singleAttTrials : 10, 
+					sharedAttTrials : 7, 
+					categoryTrials : 7
+				}, 
+				{ 
+					instHTML : '', 
+					block : 4, 
+					miniBlocks : 2, 
+					singleAttTrials : 10, 
+					sharedAttTrials : 7, 
+					categoryTrials : 7
+				}, 
+				{ 
+					instHTML : '', 
+					block : 5, 
+					miniBlocks : 2, 
+					singleAttTrials : 10, 
+					sharedAttTrials : 7, 
+					categoryTrials : 7
 				}
 			],
 			//All blocks show attribute1 on the left and attribute2 on the right. 
@@ -93,7 +120,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			//If the switch parameter is 0 or smaller, we switch the side of the category every block. 
 			//If it is larger than 0, then we switch the category side only once, in the block specified in switchSideBlock.
 			switchSideBlock : 4, //By default, we switch on block 4 (i.e., after blocks 2 and 3 showed the first pairing condition).
- 
+
 			ITIDuration : 250, //Duration between trials.
 			
 			fontColor : '#000000', //The color of messages and key reminders. 
@@ -107,9 +134,9 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			orCss : {'font-size':'1.8em', color:'#000000'},
 
 			//Will appear at the bottom of the screen during trials.
-			remindErrorText : '<p align="center" style="font-size:0.2em; font-family:arial;">' +
-				'If you make a mistake, a red <font color="#ff0000"><b>X</b></font> will appear. ' +
-				'Press the other key to continue.</p>',
+			remindErrorText : '<p align="center" style="font-size:"0.6em"; font-family:arial">' +
+			'If you make a mistake, a red <font color="#ff0000"><b>X</b></font> will appear. ' +
+			'Press the other key to continue.<p/>',
 			
 			finalText: 'You have completed this task<br/><br/>Press SPACE to continue.', 
 
@@ -156,7 +183,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 				'<p align="center">Press the <b>space bar</b> when you are ready to start.</font></p></div>', 
 			
 			//The default feedback messages for each cutoff. 
-			//If you put attribute1, attribute2 and thecategory here, 
+			//If you put attribute1, attribute2 and category here, 
 			//these will be replaced with the names of attribute1, attribute2 and category.
 			fb_strongAssociationWithAttribute2 : 'Your data suggest a strong positive automatic attitude toward thecategory.',
 			fb_moderateAssociationWithAttribute2 : 'Your data suggest a moderate positive automatic attitude toward thecategory.',
@@ -173,7 +200,117 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 		};
 
 		// extend the current object with the default
-		_.defaults(piCurrent, options, stiatObj);
+		_.extend(piCurrent, _.defaults(options, stiatObj));
+
+		
+		/**
+        **** For Qualtrics
+        */
+        API.addSettings('onEnd', window.minnoJS.onEnd);
+
+		//For debugging the logger
+		//window.minnoJS.logger = console.log;
+		//window.minnoJS.onEnd = console.log;
+		
+        API.addSettings('logger', {
+            // gather logs in array
+            onRow: function(logName, log, settings, ctx){
+                if (!ctx.logs) ctx.logs = [];
+                ctx.logs.push(log);
+            },
+            // onEnd trigger save (by returning a value)
+            onEnd: function(name, settings, ctx){
+                return ctx.logs;
+            },
+            // Transform logs into a string
+            // we save as CSV because qualtrics limits to 20K characters and this is more efficient.
+            serialize: function (name, logs) {
+                var headers = ['block', 'trial', 'cond', 'type', 'cat',  'stim', 'resp', 'err', 'rt', 'd', 'fb', 'bOrd'];
+                //console.log(logs);
+                var myLogs = [];
+                var iLog;
+                for (iLog = 0; iLog < logs.length; iLog++)
+                {
+                    if(!hasProperties(logs[iLog], ['trial_id', 'name', 'responseHandle', 'stimuli', 'media', 'latency'])){
+                        //console.log('---MISSING PROPERTIY---');
+                        //console.log(logs[iLog]);
+                        //console.log('---MISSING PROPERTIY---');
+                    }
+                    else if(!hasProperties(logs[iLog].data, ['block', 'condition', 'score']))
+                    {
+                        //console.log('---MISSING data PROPERTIY---');
+                        //console.log(logs[iLog].data);
+                        //console.log('---MISSING data PROPERTIY---');
+                    }
+                    else
+                    {
+                        myLogs.push(logs[iLog]);
+                    }
+                }
+                var content = myLogs.map(function (log) { 
+                    return [
+                        log.data.block, //'block'
+                        log.trial_id, //'trial'
+                        log.data.condition, //'cond'
+                        //log.data, //'comp'
+                        log.name, //'type'
+                        log.stimuli[0], //'cat'
+                        log.media[0], //'stim'
+                        log.responseHandle, //'resp'
+                        log.data.score, //'err'
+                        log.latency, //'rt'
+                        '', //'d'
+                        '', //'fb'
+                        '' //'bOrd'
+                        ]; });
+                //console.log('mapped');
+                //Add a line with the feedback, score and block-order condition
+                content.push([
+                            9, //'block'
+                            999, //'trial'
+                            'end', //'cond'
+                            //'', //'comp'
+                            '', //'type'
+                            '', //'cat'
+                            '', //'stim'
+                            '', //'resp'
+                            '', //'err'
+                            '', //'rt'
+                            piCurrent.d, //'d'
+                            piCurrent.feedback, //'fb'
+                            block2Condition //'bOrd'
+                        ]);
+                //console.log(content);
+                        
+                content.unshift(headers);
+                return toCsv(content);
+
+                function hasProperties(obj, props) {
+                    var iProp;
+                    for (iProp = 0; iProp < props.length; iProp++)
+                    {
+                        if (!obj.hasOwnProperty(props[iProp]))
+                        {
+                            //console.log('missing ' + props[iProp]);
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                function toCsv(matrice) { return matrice.map(buildRow).join('\n'); }
+                function buildRow(arr) { return arr.map(normalize).join(','); }
+                // wrap in double quotes and escape inner double quotes
+                function normalize(val) {
+                    var quotableRgx = /(\n|,|")/;
+                    if (quotableRgx.test(val)) return '"' + val.replace(/"/g, '""') + '"';
+                    return val;
+                }
+            },
+            // Set logs into an input (i.e. put them wherever you want)
+            send: function(name, serialized){
+                window.minnoJS.logger(serialized);
+            }
+        });
 
 		/***********************************************************************************
 		*
@@ -698,8 +835,11 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 				var DScoreObj = scorer.computeD();
 				//Save for the task's session.
 				piCurrent.feedback = DScoreObj.FBMsg;
+				piCurrent.d = DScoreObj.DScore;
 				//Save to server
-				API.save({block2Condition:block2Condition, feedback:DScoreObj.FBMsg, d: DScoreObj.DScore});
+				//API.save({block2Condition:block2Condition, feedback:DScoreObj.FBMsg, d: DScoreObj.DScore});
+				window.minnoJS.onEnd();
+
 			}
 		});
 
