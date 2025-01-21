@@ -35,7 +35,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			attribute1: {
 				name: 'Negative',
 				title: {
-					media: {word: 'Unpleasant'},
+					media: {word: 'Negative'},
 					css: {color: '#31b404', 'font-size': '2em'},
 					height: 4
 				},
@@ -50,7 +50,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			attribute2: {
 				name: 'Positive',
 				title: {
-					media: {word: 'Pleasant'},
+					media: {word: 'Positive'},
 					css: {color: '#31b404', 'font-size': '2em'},
 					height: 4
 				},
