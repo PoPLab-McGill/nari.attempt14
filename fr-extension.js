@@ -17,48 +17,48 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			},
 			// Define the category
 			category: {
-				name: 'Autistics', // Category name to be used for feedback and logging
+				name: 'Les autistes', // Category name to be used for feedback and logging
 				title: {
-					media: {word: 'Autistics'}, // Name of the category presented in the task
+					media: {word: 'Les autistes'}, // Name of the category presented in the task
 					css: {color: '#31b404', 'font-size': '2em'},
 					height: 4
 				},
 				media: [
-		    { word: 'Repeats body movements' },
-                    { word: 'Avoids eye contact' },
-                    { word: 'Dislikes unexpected changes' },
-                    { word: 'Struggles making friends' },
-                    { word: 'Repeats certain words' }
+		    { word: 'Répétition de mouvements' },
+                    { word: 'Évitement du contact visuel' },
+                    { word: 'Aversion aux changements soudains' },
+                    { word: 'Difficulté à se faire des amis' },
+                    { word: 'Répétition de certains mots' }
 				],
 				css: {color: '#31b404', 'font-size': '2em'}
 			},
 			attribute1: {
-				name: 'Negative',
+				name: 'Négatif',
 				title: {
-					media: {word: 'Negative'},
+					media: {word: 'Négatif'},
 					css: {color: '#31b404', 'font-size': '2em'},
 					height: 4
 				},
 				media: [
                     { word: 'Terrible' },
-                    { word: 'Angry' },
-                    { word: 'Hate' },
-                    { word: 'Evil' }
+                    { word: 'Fâché' },
+                    { word: 'Haine' },
+                    { word: 'Mal' }
 				],
 				css: {color: '#31b404', 'font-size': '2em'}
 			},
 			attribute2: {
-				name: 'Positive',
+				name: 'Positif',
 				title: {
-					media: {word: 'Positive'},
+					media: {word: 'Positif'},
 					css: {color: '#31b404', 'font-size': '2em'},
 					height: 4
 				},
 				media: [
-                    { word: 'Love' },
-                    { word: 'Joy' }, 
-                    { word: 'Pleasure' },
-                    { word: 'Peace' }
+                    { word: 'Amour' },
+                    { word: 'Joi' }, 
+                    { word: 'Plaisir' },
+                    { word: 'Paix' }
 				],
 				css: {color: '#31b404', 'font-size': '2em'}
 			},
