@@ -20,7 +20,7 @@ var API = new APIConstructor();
   		attribute1 : 
 			{
             name: 'Positive',
-            title: {media: {word: 'Negative'}, css: {color: '#31b404', 'font-size': '2em'}, height: 7},
+            title: {media: {word: 'Positive'}, css: {color: '#31b404', 'font-size': '2em'}, height: 7},
             media: [
                     { word: 'Love' },
                     { word: 'Joy' },
@@ -32,7 +32,7 @@ var API = new APIConstructor();
 			},
         attribute2: {
             name: 'Negative',
-            title: {media: {word: 'Positive'}, css: {color: '#31b404', 'font-size': '2em'}, height: 7},
+            title: {media: {word: 'Negative'}, css: {color: '#31b404', 'font-size': '2em'}, height: 7},
             media: [
                     { word: 'Terrible' },
                     { word: 'Angry' }, 
