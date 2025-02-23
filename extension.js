@@ -33,21 +33,6 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 				css: {color: '#31b404', 'font-size': '2em'}
 			},
 			attribute1: {
-				name: 'Negative',
-				title: {
-					media: {word: 'Negative'},
-					css: {color: '#31b404', 'font-size': '2em'},
-					height: 4
-				},
-				media: [
-                    { word: 'Terrible' },
-                    { word: 'Angry' },
-                    { word: 'Hate' },
-                    { word: 'Evil' }
-				],
-				css: {color: '#31b404', 'font-size': '2em'}
-			},
-			attribute2: {
 				name: 'Positive',
 				title: {
 					media: {word: 'Positive'},
@@ -56,9 +41,24 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 				},
 				media: [
                     { word: 'Love' },
-                    { word: 'Joy' }, 
+                    { word: 'Joy' },
                     { word: 'Pleasure' },
                     { word: 'Peace' }
+				],
+				css: {color: '#31b404', 'font-size': '2em'}
+			},
+			attribute2: {
+				name: 'Negative',
+				title: {
+					media: {word: 'Negative'},
+					css: {color: '#31b404', 'font-size': '2em'},
+					height: 4
+				},
+				media: [
+                    { word: 'Terrible' },
+                    { word: 'Angry' }, 
+                    { word: 'Hate' },
+                    { word: 'Evil' }
 				],
 				css: {color: '#31b404', 'font-size': '2em'}
 			},
