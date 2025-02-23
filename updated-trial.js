@@ -19,25 +19,25 @@ var API = new APIConstructor();
 
   		attribute1 : 
 			{
-            name: 'Negative',
+            name: 'Positive',
             title: {media: {word: 'Negative'}, css: {color: '#31b404', 'font-size': '2em'}, height: 7},
             media: [
-                    { word: 'Terrible' },
-                    { word: 'Angry' },
-                    { word: 'Hate' },
-                    { word: 'Evil' }
+                    { word: 'Love' },
+                    { word: 'Joy' },
+                    { word: 'Pleasure' },
+                    { word: 'Peace' }
 			], 
 			//Can change color and size of the targets here.
 			css : {color:'#31b404','font-size':'3em'}
 			},
         attribute2: {
-            name: 'Positive',
+            name: 'Negative',
             title: {media: {word: 'Positive'}, css: {color: '#31b404', 'font-size': '2em'}, height: 7},
             media: [
-                    { word: 'Love' },
-                    { word: 'Joy' }, 
-                    { word: 'Pleasure' },
-                    { word: 'Peace' }
+                    { word: 'Terrible' },
+                    { word: 'Angry' }, 
+                    { word: 'Hate' },
+                    { word: 'Evil' }
             ],
             css: {color: '#31b404', 'font-size': '3em'}
         }
