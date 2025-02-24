@@ -65,7 +65,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			// Trial blocks configuration
 			trialsByBlock : 
 			[//Each object in this array defines a block
-			{
+			        {
 					instHTML : '', //Empty means we will create the inst from the instTemplate variable further below. 
 					block : 1, //The block variable is not used later, but could help the user. 
 					//In each block, we can include a number of mini-blocks, to reduce repetition of same group/response.
