@@ -111,9 +111,9 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 
 			//If the switch parameter is 0 or smaller, we switch the side of the category every block. 
 			//If it is larger than 0, then we switch the category side only once, in the block specified in switchSideBlock.
-			switchSideBlock : 4, //By default, we switch on block 4 (i.e., after blocks 2 and 3 showed the first pairing condition).
+			switchSideBlock : 3, //By default, we switch on block 4 (i.e., after blocks 2 and 3 showed the first pairing condition).
 
-			ITIDuration : 250, //Duration between trials.
+			ITIDuration : 1500, //Duration between trials.
 			
 			fontColor : '#000000', //The color of messages and key reminders. 
 			
