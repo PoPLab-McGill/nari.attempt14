@@ -87,9 +87,9 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 					instHTML : '', 
 					block : 3, 
 					miniBlocks : 2, 
-					singleAttTrials : 10, 
-					sharedAttTrials : 7, 
-					categoryTrials : 7
+					singleAttTrials : 16, 
+					sharedAttTrials : 10, 
+					categoryTrials : 10
 				}, 
 				{ 
 					instHTML : '', 
@@ -103,9 +103,9 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 					instHTML : '', 
 					block : 5, 
 					miniBlocks : 2, 
-					singleAttTrials : 10, 
-					sharedAttTrials : 7, 
-					categoryTrials : 7
+					singleAttTrials : 16, 
+					sharedAttTrials : 10, 
+					categoryTrials : 10
 				}
 			],
 			//All blocks show attribute1 on the left and attribute2 on the right. 
