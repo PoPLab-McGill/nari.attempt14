@@ -9,10 +9,11 @@ var API = new APIConstructor();
 		      height : 7 //Used to position the "Or" in the combined block.
 		    }, 
             media: [
-                    { word: 'Avoids eye contact' },
+                    { word: 'Repeats body movement' },
+		    { word: 'Avoids eye contact' },
                     { word: 'Dislikes unexpected changes' },
                     { word: 'Struggles making friends' },
-                    { word: 'Repeats certain words' }
+                    { word: 'Interprets language differently' }
             ],
             css: {color: '#31b404', 'font-size': '3em'}
 		  },	
