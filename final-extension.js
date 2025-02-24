@@ -72,7 +72,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 					miniBlocks : 2, //Set to 1 if don't need mini blocks. 0 will break the task.
 					singleAttTrials : 0, //Number of trials of the attribute that does not share key with the category (in a mini block).
 					sharedAttTrials : 24, //Number of trials of the attribute that shares key with the category (in a mini block).
-					categoryTrials : 0 // Number of trials of the category (in a mini-block). If 0, the label does not appear.
+					categoryTrials : 24 // Number of trials of the category (in a mini-block). If 0, the label does not appear.
 					//Note: if no category trials, then attribute1, the one on the left, is considered the single attribute.
 				}, 
 				{ 
@@ -81,7 +81,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 					miniBlocks : 2, 
 					singleAttTrials : 0, 
 					sharedAttTrials : 36, 
-					categoryTrials : 0
+					categoryTrials : 36
 				}, 
 				{ 
 					instHTML : '', 
@@ -89,7 +89,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 					miniBlocks : 2, 
 					singleAttTrials : 0, 
 					sharedAttTrials : 24, 
-					categoryTrials : 36
+					categoryTrials : 24
 				}, 
 				{ 
 					instHTML : '', 
@@ -97,7 +97,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 					miniBlocks : 2, 
 					singleAttTrials : 0, 
 					sharedAttTrials : 36, 
-					categoryTrials : 0
+					categoryTrials : 36
 				}
 			],
 			//All blocks show attribute1 on the left and attribute2 on the right. 
