@@ -113,7 +113,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			//If it is larger than 0, then we switch the category side only once, in the block specified in switchSideBlock.
 			switchSideBlock : 3, //By default, we switch on block 4 (i.e., after blocks 2 and 3 showed the first pairing condition).
 
-			ITIDuration : 1500, //Duration between trials.
+			ITIDuration : 250, //Duration between trials.
 			
 			fontColor : '#000000', //The color of messages and key reminders. 
 			
@@ -130,7 +130,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			'If you make a mistake, a red <font color="#ff0000"><b>X</b></font> will appear. ' +
 			'Press the other key to continue.<p/>',
 			
-			finalText: 'You have completed this task<br/><br/>Press SPACE to continue.', 
+			finalText: 'You have completed this task<br/><br/>Press SPACE to continue the study.', 
 
 			//These are templates for the instructions in the task. 
 			//If you want more specific instructions for different blocks, 
