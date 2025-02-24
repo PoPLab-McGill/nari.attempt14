@@ -28,7 +28,7 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
                     { word: 'Avoids eye contact' },
                     { word: 'Dislikes unexpected changes' },
                     { word: 'Struggles making friends' },
-                    { word: 'interprets language differently' }
+                    { word: 'Interprets language differently' }
 				],
 				css: {color: '#31b404', 'font-size': '2em'}
 			},
