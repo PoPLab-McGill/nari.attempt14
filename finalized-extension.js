@@ -17,15 +17,14 @@ define(['pipAPI','pipScorer','underscore'], function(APIConstructor, Scorer, _) 
 			},
 			// Define the category
 			category: {
-				name: 'Autistics', // Category name to be used for feedback and logging
+				name: 'Autistic', // Category name to be used for feedback and logging
 				title: {
-					media: {word: 'Autistics'}, // Name of the category presented in the task
+					media: {word: 'Autistic'}, // Name of the category presented in the task
 					css: {color: '#31b404', 'font-size': '2em'},
 					height: 4
 				},
 				media: [
 		    { word: 'Repeats body movements' },
-                    { word: 'Avoids eye contact' },
                     { word: 'Dislikes unexpected changes' },
                     { word: 'Struggles making friends' },
                     { word: 'Interprets language literally' }
