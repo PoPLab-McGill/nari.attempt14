@@ -1,4 +1,4 @@
-define(['pipAPI', 'https://cdn.jsdelivr.net/gh/PoPLab-McGill/smiaa-sc-iat@main/finalized-extension.js'], function(APIConstructor, stiatExtension){
+define(['pipAPI', 'https://cdn.jsdelivr.net/gh/PoPLab-McGill/qualtrics-smiaa-sc-iat@main/extension.js'], function(APIConstructor, stiatExtension){
 var API = new APIConstructor();
 		  return stiatExtension({
 		  category : { 
