@@ -12,7 +12,7 @@ var API = new APIConstructor();
                     { word: 'Repeats body movement' },
                     { word: 'Dislikes unexpected changes' },
                     { word: 'Struggles making friends' },
-                    { word: 'Interprets language differently' }
+                    { word: 'Interprets language literally' }
             ],
             css: {color: '#31b404', 'font-size': '3em'}
 		  },	
